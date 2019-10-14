@@ -5,16 +5,18 @@ namespace WishShop
     public class Wish
     {
         public string Text { get; }
-        public int Price { get; }
-        private int _successPercentage = 90;
+        public int Price { get; protected set;}
+        protected int _successPercentage = 90;
 
         public Wish(string text)
         {
             Text = text;
             Price = 10_000;
         }
-
-        public bool MakeWish(User user)
+        public override string ToString(){
+            return$"The wish is: {Text}. It costs {Price}";
+        }
+        public virtual bool MakeWish(User user)
         {
             if (user.Money < Price)
             {
@@ -32,7 +34,7 @@ namespace WishShop
             }
             else
             {
-                Console.WriteLine($"  Sorry, your Wish, '{Text},` was didn't work out.!");
+                Console.WriteLine($"  Sorry, your Wish, '{Text},` didn't work out.!");
             }
             Console.WriteLine("---------");
 

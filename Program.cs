@@ -19,7 +19,10 @@ namespace WishShop
             string wishText = Console.ReadLine();
             while (!string.IsNullOrWhiteSpace(wishText))
             {
-                Wish aWish = new Wish(wishText);
+                DiscountWish aWish = new DiscountWish(wishText);
+                //this the override tostring method
+                Console.WriteLine(aWish);
+                aWish.IncreaseSuccess();
                 if (aWish.MakeWish(aUser))
                 {
                     Console.WriteLine("Yay!");
